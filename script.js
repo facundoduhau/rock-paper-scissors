@@ -1,20 +1,49 @@
-function getComputerChoice() // function to generate the computers choice, inside the given items of the array
+var rpsList = ["ROCK", "PAPER", "SCISSORS"]
+var computerChoice;
+var playerChoice;
+var computerScore = 0;
+var playerScore = 0;
+
+function getComputerChoice()
 {
-    let number = Math.floor(Math.random()*3);
-    console.log(number);
-    let choiceList = ["ROCK", "PAPER", "SCISSORS"];
-    let choice = choiceList[number];
-    return choice;
+    computerChoice = rpsList[Math.floor(Math.random()*3)];
+    return computerChoice;
 }
 
-function playerChoice() // function to prompt the user for a choice
+function getPlayerChoice()
 {
-        let playerChoice = prompt("What will you play? ").toUpperCase();
-        return playerChoice;
+    playerChoice = prompt("What will you play? ").toUpperCase();
+    return playerChoice;
 }
 
-var choice = getComputerChoice();   // Get the values returned by the functions
-var playerChoice = playerChoice();  //
+function playRound()
+{
+    if (computerChoice == playerChoice)
+    {
+        alert("It's a tie! Try again");
+    }
 
-console.log(choice); // show the results
-console.log(playerChoice);
+    if (computerChoice == "PAPER" && playerChoice == "SCISSORS" || computerChoice == "SCISSORS" && playerChoice == "ROCK" || computerChoice == "ROCK" && playerChoice == "PAPER")
+    {
+        alert("You win! Nice!");
+        playerScore +=1;
+        return playerScore;
+    }
+
+    if (computerChoice == "PAPER" && playerChoice == "ROCK" || computerChoice == "SCISSORS" && playerChoice == "PAPER" || computerChoice == "ROCK" && playerChoice == "SCISSORS")
+    {
+
+        alert("You lose! Try again!")
+        computerScore += 1;
+        return computerScore;
+
+    }
+}
+do
+{
+    playRound(getComputerChoice(), getPlayerChoice());
+}
+while(playerScore < 5 && computerScore < 5);
+
+console.log("Computer's Score: " + computerScore);
+console.log("Player's score: " + playerScore);
