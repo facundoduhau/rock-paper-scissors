@@ -1,49 +1,23 @@
-var rpsList = ["ROCK", "PAPER", "SCISSORS"]
-var computerChoice;
-var playerChoice;
-var computerScore = 0;
-var playerScore = 0;
-
-function getComputerChoice()
+function onRock()                   // Declares a function that acts when the Rock button is clicked
 {
-    computerChoice = rpsList[Math.floor(Math.random()*3)];
-    return computerChoice;
-}
+    alert("You selected Rock");     //
+};
 
-function getPlayerChoice()
+function onPaper()                  // Declares a function that acts when the Paper button is clicked
 {
-    playerChoice = prompt("What will you play? ").toUpperCase();
-    return playerChoice;
-}
+    alert("You selected Paper");    //
+};
 
-function playRound()
+function onScissors()               // Declares a function that acts when the Scissors button is clicked
 {
-    if (computerChoice == playerChoice)
-    {
-        alert("It's a tie! Try again");
-    }
+    alert("You selected Scissors"); //
+};
 
-    if (computerChoice == "PAPER" && playerChoice == "SCISSORS" || computerChoice == "SCISSORS" && playerChoice == "ROCK" || computerChoice == "ROCK" && playerChoice == "PAPER")
-    {
-        alert("You win! Nice!");
-        playerScore +=1;
-        return playerScore;
-    }
+const btnRock = document.getElementById('btn-rock')         // Returns the proper button's function when button is clicked, listens for click event
+btnRock.addEventListener('click', () => onRock());          //
 
-    if (computerChoice == "PAPER" && playerChoice == "ROCK" || computerChoice == "SCISSORS" && playerChoice == "PAPER" || computerChoice == "ROCK" && playerChoice == "SCISSORS")
-    {
+const btnPaper = document.getElementById('btn-paper')       //Returns the proper button's function when button is clicked, listens for click event
+btnPaper.addEventListener('click', () => onPaper());        //
 
-        alert("You lose! Try again!")
-        computerScore += 1;
-        return computerScore;
-
-    }
-}
-do
-{
-    playRound(getComputerChoice(), getPlayerChoice());
-}
-while(playerScore < 5 && computerScore < 5);
-
-console.log("Computer's Score: " + computerScore);
-console.log("Player's score: " + playerScore);
+const btnScissors = document.getElementById('btn-scissors') //Returns the proper button's function when button is clicked, listens for click event
+btnScissors.addEventListener('click', () => onScissors());  //
